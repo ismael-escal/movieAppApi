@@ -1,0 +1,78 @@
+Objective: ExpressJS API - Movie Catalog System
+
+1. What is the main objective of the project?
+	- ExpressJS API - Movie Catalog System with Comments and CRUD functionalities for Admin
+
+2. Who are the target users of the application?
+	- Public
+
+3. What are the core features or functionalities required?
+
+	- Basic CRUD operations for Admin in catalog (Create, Read, Update, Delete).
+	- Users must be able to Register and Login
+	- Authenticated Users should be able to add comments to movies
+	- All Users can retrieve movies from the catalog
+	- All Users can retrieve single movie by id
+
+4. What data will the application need to store and manage?
+
+	- Movie
+		- title
+		- director
+		- year
+		- description
+		- genre
+		- comments
+
+	- User information 
+		- userName
+		- email
+		- password
+		- isAdmin
+
+5. Are there any specific technical requirements or constraints?
+
+	- Express.js API.
+	- MongoDB with Mongoose for data storage and management.
+	- RESTful Architecture.
+
+6. What are the security and authentication requirements?
+
+	- Token-based Authentication (JWT).
+	- Brcypt hash
+
+7. What are your routes and controllers?
+
+	Routes:
+
+		User
+
+			POST /users/login - User login route.
+			POST /users/register - User registration route.
+
+		Movie Routes:
+
+			POST /movies/addMovie - Add a new movie.
+			GET /movies/getMovies - Retrieve a list of all movies.
+			GET /movies/getMovie/:id - Retrieve a specific movie by its ID.
+			PATCH /movies/updateMovie/:id - Update an existing movie.
+			DELETE /movies/deleteMovie/:id - Delete a movie by its ID.
+			PATCH /movies/addComment/:id - Add a comment to an existing movie.
+			GET /movies/getComments/:id - Retrieve a list of all comments to a movies by its ID.
+
+	Controllers:
+
+		User Controller:
+
+			loginUser
+			registerUser
+
+		Inventory Controller:
+
+			addMovie
+			getAllMovies
+			getMovieById
+			updateMovie
+			deleteMovie
+			addComment
+			getComments
