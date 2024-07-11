@@ -24,7 +24,7 @@ const router = express.Router();
 
 router.post("/addMovie", verify, verifyAdmin, movieController.addMovie);
 router.get("/getMovies", movieController.getAllMovies);
-router.get("/getMovie/:id", movieController.getMovieById);
+router.get("/getMovie/:id", verify, movieController.getMovieById);
 router.patch("/updateMovie/:id", verify, verifyAdmin, movieController.updateMovie);
 router.delete("/deleteMovie/:id", verify, verifyAdmin, movieController.deleteMovie);
 router.patch("/addComment/:id", verify, verifyNonAdmin, movieController.addComment);
