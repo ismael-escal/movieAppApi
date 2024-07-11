@@ -12,7 +12,6 @@ module.exports.registerUser = (req, res) => {
 
 	// create a variable called "newUser" and instantiate a new "User" object using the "User" model
 	let newUser = new User({
-		userName: req.body.userName,
 		email: req.body.email,
 		// hashSync() method is used to encrypot information.
 		// 10 is the number of "salt" rounds 
@@ -83,3 +82,23 @@ module.exports.loginUser = (req, res) => {
 		return res.status(400).send({ error: 'Invalid in email'});
 	}
 }
+
+
+module.exports.getProfile = (req, res) => {
+
+    return User.findById(req.user.id).select('-password').then(user => {
+
+    	if (!user) {
+	        
+	        return res.status(404).send({ error: 'User not found' });
+    	}
+
+
+        return res.status(200).send({ user });
+
+    }).catch(findErr => {
+
+		console.error('Error in finding the user: ', findErr);
+		return res.status(500).send({ error: 'Failed to fetch user profile' });
+	});
+};
